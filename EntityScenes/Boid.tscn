@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://EntityScenes/Boid.gd" type="Script" id=1]
+[ext_resource path="res://EntityScenes/BoidVisual.gd" type="Script" id=2]
+
+[node name="Boid" type="KinematicBody2D" groups=["Boid"]]
+position = Vector2( 480, 293 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Basic Boid class. Allows one to setup, max speed/force, aswell as the weights of the seperation, alignment, and cohesion term. Also has feature where clicking on a boid lets you visualize each social force direction and detection radius, aswell as debuggs the exact numerical value of each of these forces. With the number of neighors this boid sees at this moment."
+}
+
+[node name="BoidVisual" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="DebugButton" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+
+[node name="DebugTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="pressed" from="DebugButton" to="." method="_on_DebugButton_pressed"]
+[connection signal="pressed" from="DebugButton" to="BoidVisual" method="_on_DebugButton_pressed"]
+[connection signal="timeout" from="DebugTimer" to="." method="_on_DebugTimer_timeout"]

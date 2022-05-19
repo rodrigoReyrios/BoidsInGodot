@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://EntityScenes/Flock.tscn" type="PackedScene" id=1]
+
+[node name="2Flocks" type="Node"]
+
+[node name="Flock" parent="." instance=ExtResource( 1 )]
+n_boids = 100
+maxspeed = 750.0
+maxforce = 200.0
+wS = 1.2
+wA = 1.5
+_seed = 10
+col = Color( 0, 0.109804, 1, 0.498039 )
+
+[node name="Flock2" parent="." instance=ExtResource( 1 )]
+n_boids = 100
+maxspeed = 750.0
+maxforce = 200.0
+wA = 0.0
+wC = 1.5
+_seed = 20
+col = Color( 1, 0, 0, 0.498039 )
